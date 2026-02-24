@@ -18,7 +18,7 @@ This experiment reproduces part of the methodology from the paper **"The Illusio
 
 The original paper tested frontier Large Reasoning Models (LRMs) — including Claude 3.7 Sonnet, DeepSeek-R1, and o3-mini — on controllable puzzle environments to study how reasoning quality scales with problem complexity. Their central finding: all models exhibit a **complete accuracy collapse** beyond a model-specific complexity threshold, even with ample token budget.
 
-This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two configurations: without thinking (8k token budget) and with adaptive thinking (32k token budget). 3 samples per complexity level, N=1 to N=10.
+This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two configurations: without thinking (32k token budget) and with adaptive thinking (32k token budget). 3 samples per complexity level, N=1 to N=10.
 
 > **Differences from the original paper:** The original used 25 samples per N, up to N=20, with a 64k token budget. This is a lightweight reproduction designed to validate the core phenomenon at lower cost.
 
@@ -153,7 +153,7 @@ python hanoi_benchmark.py --model [sonnet|opus] --thinking --n-max 12 --samples 
 
 | Run | Config | Estimated cost |
 |-----|--------|---------------|
-| No thinking | N=1–10, 3 samples, 8k tokens | ~$1–2 |
+| No thinking | N=1–10, 3 samples, 32k tokens | ~$2-3 |
 | With thinking | N=1–10, 3 samples, 32k tokens | ~$5–8 |
 | Compare mode | Both runs combined | ~$8–12 |
 
