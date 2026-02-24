@@ -40,7 +40,7 @@ This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two
 | 1 | 1 | **100%** | 516 | **100%** | 533 |
 | 2 | 3 | **100%** | 725 | **100%** | 843 |
 | 3 | 7 | **100%** | 1,022 | **100%** | 1,131 |
-| 4 | 15 | **67%** | 1,573 | **100%** | 2,803 |
+| 4 | 15 | **33%** | 1,573 | **100%** | 2,803 |
 | 5 | 31 | **100%** | 1,414 | **100%** | 5,623 |
 | 6 | 63 | **0%** | 1,539 | **100%** | 6,166 |
 | 7 | 127 | **100%** | 1,897 | **100%** | 21,435 |
@@ -165,4 +165,3 @@ python hanoi_benchmark.py --model [sonnet|opus] --thinking --n-max 12 --samples 
 - **Run with `--compare` mode** to generate a side-by-side visualization of both curves on the same chart
 - **Increase samples to 5–10** for more statistical reliability, especially around the collapse boundary (N=6–8)
 - **Test Opus 4.6** to see if the larger model pushes the threshold to N=9 or N=10
-
