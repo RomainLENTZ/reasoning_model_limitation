@@ -147,28 +147,37 @@ def estimate_cost(results: list, model: str) -> float:
             total_tokens * 0.4 / 1_000_000 * output_price)
 
 
-def call_with_streaming(client, kwargs: dict) -> tuple[str, int]:
+def call_with_streaming(client, kwargs: dict, max_retries: int = 4) -> tuple[str, int]:
     """
     Use streaming to handle long requests (required for max_tokens > ~4096 with thinking).
+    Retries automatically on overloaded errors with exponential backoff.
     Returns (full_text, total_tokens).
     """
-    text = ""
-    input_tokens = 0
-    output_tokens = 0
+    import time
 
-    with client.messages.stream(**kwargs) as stream:
-        for event in stream:
-            # Collect text from streaming events
-            pass
-        # Get the final message after streaming completes
-        final = stream.get_final_message()
-        for block in final.content:
-            if hasattr(block, "text"):
-                text += block.text
-        input_tokens = final.usage.input_tokens
-        output_tokens = final.usage.output_tokens
+    for attempt in range(max_retries):
+        try:
+            with client.messages.stream(**kwargs) as stream:
+                final = stream.get_final_message()
+                text = ""
+                for block in final.content:
+                    if hasattr(block, "text"):
+                        text += block.text
+                return text, final.usage.input_tokens + final.usage.output_tokens
 
-    return text, input_tokens + output_tokens
+        except Exception as e:
+            err = str(e).lower()
+            is_overloaded = "overloaded" in err
+            is_incomplete = "incomplete" in err or "chunked" in err
+            is_retryable = is_overloaded or is_incomplete
+
+            if is_retryable and attempt < max_retries - 1:
+                wait = 30 * (2 ** attempt)  # 30s, 60s, 120s
+                reason = "overloaded" if is_overloaded else "incomplete response"
+                print(f" [{reason}, retry {attempt+1}/{max_retries-1} in {wait}s...]", end=" ", flush=True)
+                time.sleep(wait)
+            else:
+                raise
 
 
 def run_benchmark(
