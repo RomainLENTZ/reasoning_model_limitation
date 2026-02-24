@@ -4,12 +4,11 @@
 ---
 
 *Experiment run: February 2026*
-*No thinking: 3 samples per N, max_tokens=8,000, model: claude-sonnet-4-6*
+*No thinking: 3 samples per N, max_tokens=32,000, model: claude-sonnet-4-6*
 *With thinking: 3 samples per N, max_tokens=32,000, adaptive thinking, model: claude-sonnet-4-6*
 *Original paper: Shojaee et al., "The Illusion of Thinking", Apple Research, 2025*
 
 ---
-
 
 ## Context
 
@@ -38,16 +37,16 @@ This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two
 
 | N | Min moves | No thinking (accuracy) | No thinking tokens avg | With thinking (accuracy) | Thinking tokens avg |
 |---|-----------|------------------------|------------------------|-------------------------|---------------------|
-| 1 | 1 | **100%** | 559 | **100%** | 533 |
-| 2 | 3 | **100%** | 789 | **100%** | 843 |
-| 3 | 7 | **100%** | 1,054 | **100%** | 1,131 |
-| 4 | 15 | **67%** | 1,473 | **100%** | 2,803 |
-| 5 | 31 | **100%** | 1,525 | **100%** | 5,623 |
-| 6 | 63 | **0%** | 2,338 | **100%** | 6,166 |
-| 7 | 127 | **100%** | 1,941 | **100%** | 21,435 |
-| 8 | 255 | **0%** | 3,106 | **0%** ← COLLAPSE | 32,561 |
-| 9 | 511 | **0%** | 5,361 | **0%** ← COLLAPSE | ~32,567 |
-| 10 | 1023 | **0%** | 8,599 | **0%** ← COLLAPSE | 32,573 |
+| 1 | 1 | **100%** | 516 | **100%** | 533 |
+| 2 | 3 | **100%** | 725 | **100%** | 843 |
+| 3 | 7 | **100%** | 1,022 | **100%** | 1,131 |
+| 4 | 15 | **67%** | 1,573 | **100%** | 2,803 |
+| 5 | 31 | **100%** | 1,414 | **100%** | 5,623 |
+| 6 | 63 | **0%** | 1,539 | **100%** | 6,166 |
+| 7 | 127 | **100%** | 1,897 | **100%** | 21,435 |
+| 8 | 255 | **0%** | 2,898 | **0%** ← COLLAPSE | 32,561 |
+| 9 | 511 | **0%** | 6,916 | **0%** ← COLLAPSE | ~32,567 |
+| 10 | 1023 | **0%** | 9,520 | **0%** ← COLLAPSE | 32,573 |
 
 ---
 
@@ -67,7 +66,8 @@ That's a **+2 disk improvement** in the effective solving range, which correspon
 
 With thinking, the drop from N=7 (100%) to N=8 (0%) is a cliff — no partial failures, no recovery. All 3 samples at N=8 fail with the same error: "No moves extracted." The model burns through ~32k tokens but produces no valid move list, suggesting it ran out of token budget mid-generation rather than producing wrong moves.
 
-This is different from the no-thinking collapse, where the model *does* produce moves but makes an illegal move at a specific position. The thinking model appears to attempt a more elaborate generation that simply doesn't fit in the budget.
+The 32k no-thinking run reveals more varied failure modes at N=6: one sample fails at move #31 (same as Run 1), one fails at move #47, and one executes all 63 moves but reaches an incorrect final state — the model completes the full move count but solves a slightly different problem. This diversity of failures across runs suggests the model is near its boundary and explores multiple flawed strategies rather than one deterministic error.
+
 
 ### 3. The token behavior confirms the paper's central finding
 
