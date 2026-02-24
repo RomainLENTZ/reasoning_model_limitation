@@ -111,6 +111,44 @@ The N=8 token exhaustion pattern also raises a methodological point: with a larg
 
 ---
 
+## Usage
+
+```bash
+pip install anthropic matplotlib numpy
+```
+
+```bash
+# Set your API key
+$env:ANTHROPIC_API_KEY="sk-ant-..."   # PowerShell
+export ANTHROPIC_API_KEY="sk-ant-..."  # bash/zsh
+```
+
+```bash
+# Run without thinking (~$1-2)
+python hanoi_benchmark.py
+
+# Run with adaptive thinking (~$5-8)
+python hanoi_benchmark.py --thinking --max-tokens 32000
+
+# Compare both on same chart (~$8-12)
+python hanoi_benchmark.py --compare --max-tokens 32000
+
+# Full options
+python hanoi_benchmark.py --model [sonnet|opus] --thinking --n-max 12 --samples 5 --max-tokens 32000
+```
+
+---
+
+## Pricing estimate
+
+| Run | Config | Estimated cost |
+|-----|--------|---------------|
+| No thinking | N=1–10, 3 samples, 8k tokens | ~$1–2 |
+| With thinking | N=1–10, 3 samples, 32k tokens | ~$5–8 |
+| Compare mode | Both runs combined | ~$8–12 |
+
+---
+
 ## Next steps
 
 - **Increase token budget to 64k** for the thinking run to observe the actual reasoning failure at N=8 (vs. budget exhaustion)
