@@ -3,9 +3,19 @@
 
 ---
 
+*Experiment run: February 2026*
+*No thinking: 3 samples per N, max_tokens=8,000, model: claude-sonnet-4-6*
+*With thinking: 3 samples per N, max_tokens=32,000, adaptive thinking, model: claude-sonnet-4-6*
+*Original paper: Shojaee et al., "The Illusion of Thinking", Apple Research, 2025*
+
+---
+
+
 ## Context
 
 This experiment reproduces part of the methodology from the paper **"The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"** published by Apple Research (Shojaee et al., 2025).
+
+> Shojaee et al. (2025). *The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity.* Apple Research. [arxiv.org/abs/2506.06941](https://arxiv.org/abs/2506.06941)
 
 The original paper tested frontier Large Reasoning Models (LRMs) — including Claude 3.7 Sonnet, DeepSeek-R1, and o3-mini — on controllable puzzle environments to study how reasoning quality scales with problem complexity. Their central finding: all models exhibit a **complete accuracy collapse** beyond a model-specific complexity threshold, even with ample token budget.
 
@@ -156,9 +166,3 @@ python hanoi_benchmark.py --model [sonnet|opus] --thinking --n-max 12 --samples 
 - **Increase samples to 5–10** for more statistical reliability, especially around the collapse boundary (N=6–8)
 - **Test Opus 4.6** to see if the larger model pushes the threshold to N=9 or N=10
 
----
-
-*Experiment run: February 2026*
-*No thinking: 3 samples per N, max_tokens=8,000, model: claude-sonnet-4-6*
-*With thinking: 3 samples per N, max_tokens=32,000, adaptive thinking, model: claude-sonnet-4-6*
-*Original paper: Shojaee et al., "The Illusion of Thinking", Apple Research, 2025*
