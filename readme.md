@@ -15,6 +15,15 @@ This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two
 
 ---
 
+## Results
+
+### Without thinking (max_tokens=8,000)
+![Sonnet 4.6 without thinking](hanoi_benchmark_sonnet.png)
+
+### With adaptive thinking (max_tokens=32,000)
+![Sonnet 4.6 with adaptive thinking](hanoi_benchmark_sonnet_thinking.png)
+
+
 ## Results Summary
 
 | N | Min moves | No thinking (accuracy) | No thinking tokens avg | With thinking (accuracy) | Thinking tokens avg |
