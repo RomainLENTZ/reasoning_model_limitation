@@ -1,0 +1,242 @@
+[
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 533,
+    "error": "solved"
+  },
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 533,
+    "error": "solved"
+  },
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 533,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 817,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 875,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 836,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1141,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1133,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1118,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 15,
+    "total_moves": 15,
+    "tokens": 2259,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 15,
+    "total_moves": 15,
+    "tokens": 3147,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 15,
+    "total_moves": 15,
+    "tokens": 3004,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 4917,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 3350,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 8603,
+    "error": "solved"
+  },
+  {
+    "n": 6,
+    "success": true,
+    "valid_moves": 63,
+    "total_moves": 63,
+    "tokens": 4757,
+    "error": "solved"
+  },
+  {
+    "n": 6,
+    "success": true,
+    "valid_moves": 63,
+    "total_moves": 63,
+    "tokens": 4594,
+    "error": "solved"
+  },
+  {
+    "n": 6,
+    "success": true,
+    "valid_moves": 63,
+    "total_moves": 63,
+    "tokens": 9146,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 14946,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 26427,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 22932,
+    "error": "solved"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32567,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 0,
+    "error": "peer closed connection without sending complete message body (incomplete chunked read)"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32567,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
+  }
+]

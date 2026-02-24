@@ -1,0 +1,242 @@
+[
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 559,
+    "error": "solved"
+  },
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 559,
+    "error": "solved"
+  },
+  {
+    "n": 1,
+    "success": true,
+    "valid_moves": 1,
+    "total_moves": 1,
+    "tokens": 559,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 794,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 799,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 3,
+    "total_moves": 3,
+    "tokens": 775,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1050,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1062,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 7,
+    "total_moves": 7,
+    "tokens": 1051,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 15,
+    "total_moves": 15,
+    "tokens": 1402,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 15,
+    "total_moves": 25,
+    "tokens": 1729,
+    "error": "Move invalide #15: Disque 4 n'est pas au sommet de 1 (top=1)"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 15,
+    "total_moves": 15,
+    "tokens": 1289,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 1463,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 1652,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 1460,
+    "error": "solved"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 31,
+    "total_moves": 63,
+    "tokens": 2155,
+    "error": "Move invalide #31: Impossible de poser 6 sur 1"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 31,
+    "total_moves": 63,
+    "tokens": 2552,
+    "error": "Move invalide #31: Impossible de poser 6 sur 1"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 31,
+    "total_moves": 63,
+    "tokens": 2307,
+    "error": "Move invalide #31: Impossible de poser 6 sur 1"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 1966,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 1874,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 1984,
+    "error": "solved"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 127,
+    "total_moves": 255,
+    "tokens": 3080,
+    "error": "Move invalide #127: Impossible de poser 8 sur 1"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 127,
+    "total_moves": 255,
+    "tokens": 3167,
+    "error": "Move invalide #127: Impossible de poser 8 sur 1"
+  },
+  {
+    "n": 8,
+    "success": false,
+    "valid_moves": 127,
+    "total_moves": 255,
+    "tokens": 3071,
+    "error": "Move invalide #127: Impossible de poser 8 sur 1"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 191,
+    "total_moves": 511,
+    "tokens": 5382,
+    "error": "Move invalide #191: Disque 7 n'est pas au sommet de 1 (top=8)"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 191,
+    "total_moves": 511,
+    "tokens": 5390,
+    "error": "Move invalide #191: Disque 7 n'est pas au sommet de 1 (top=8)"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 191,
+    "total_moves": 511,
+    "tokens": 5311,
+    "error": "Move invalide #191: Disque 7 n'est pas au sommet de 1 (top=8)"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 8599,
+    "error": "Pas de moves extraits"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 8599,
+    "error": "Pas de moves extraits"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 8599,
+    "error": "Pas de moves extraits"
+  }
+]
