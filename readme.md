@@ -1,6 +1,6 @@
-# Tower of Hanoi Benchmark — Claude Sonnet 4.6
+# Tower of Hanoi & River Crossing Benchmark — Claude Sonnet 4.6
 
-> Does Claude Sonnet 4.6 actually reason? A reproducible benchmark testing reasoning collapse on Tower of Hanoi puzzles, inspired by Apple Research's "Illusion of Thinking" (2025).
+> Does Claude Sonnet 4.6 actually reason? A reproducible benchmark testing reasoning collapse on controllable puzzles, inspired by Apple Research's "Illusion of Thinking" (2025).
 
 ---
 
@@ -21,10 +21,10 @@ This reproduction runs the same Tower of Hanoi environment on **Claude Sonnet 4.
 ## Results at a Glance
 
 ### Without thinking — 64k tokens (final run)
-![Sonnet 4.6 without thinking](hanoi_benchmark_sonnet.png)
+![Sonnet 4.6 without thinking](assets/hanoi_benchmark_sonnet.png)
 
 ### With adaptive thinking — 64k tokens (final run)
-![Sonnet 4.6 with thinking](hanoi_benchmark_sonnet_thinking.png)
+![Sonnet 4.6 with thinking](assets/hanoi_benchmark_sonnet_thinking.png)
 
 ---
 
@@ -132,12 +132,53 @@ At N=8, across all runs and all budgets, the no-thinking model fails at exactly 
 
 ---
 
+## River Crossing — A Second Puzzle
+
+To complement the Tower of Hanoi results, the same benchmark was run on the **River Crossing** puzzle (N=2 to N=6, 3 samples per N, 32k token budget), using the methodology from the original paper.
+
+![River Crossing results](assets/river_benchmark_sonnet_compare.png)
+
+### Data
+
+| N | Min moves | No thinking | With thinking |
+|:-:|:---------:|:-----------:|:-------------:|
+| | | acc / tokens | acc / tokens |
+| 2 | 5 | 67% / 1,321 | 100% / 3,402 |
+| 3 | 11 | 0% / 1,670 | 100% / 19,835 |
+| 4 | 9 | 0% / 6,827 | 33% / 26,110 |
+| 5 | 11 | 0% / 2,436 | 33% / 27,904 |
+| 6 | ~15 | 0% / 11,866 | 0% / 21,619 |
+
+### What this adds
+
+**No thinking** collapses at N=3, immediately and budget-independently. At N=5 and N=6, the model fails on move #0 — it violates the safety constraint on the very first boat crossing, using fewer than 4,000 tokens out of 32,000 available. This is a clean architectural failure, fully consistent with the original paper's findings on Claude 3.7.
+
+**With thinking**, the picture is more nuanced. At N=4 and N=5, 2 out of 3 samples hit the exact token ceiling (32,413 tokens) with "No moves extracted" — the same budget-exhaustion pattern seen in Tower of Hanoi. One sample succeeds in each case. At N=6, all three samples either exhaust the budget or produce a parsing error.
+
+This means **River Crossing with thinking at 32k is also primarily budget-constrained**, not architecturally collapsed — mirroring the Tower of Hanoi pattern at 32k. Running at 64k would likely push the collapse point to N=5 or N=6.
+
+### Comparison across puzzles
+
+| | Tower of Hanoi (no thinking) | River Crossing (no thinking) | Tower of Hanoi (thinking, 64k) | River Crossing (thinking, 32k) |
+|---|---|---|---|---|
+| Collapse point | N=8 | N=3 | N=9 (budget) | N=4–5 (budget) |
+| Failure mode | Wrong move at #127 | Wrong move at #0–5 | Token ceiling | Token ceiling |
+| Nature | Architectural | Architectural | Capacity limit | Capacity limit |
+| Budget-independent? | Yes | Yes | No | No |
+
+The no-thinking failures on both puzzles are genuine reasoning failures, unaffected by token budget. The thinking failures are capacity limits that would likely shift with a larger budget — a pattern consistent with what was observed on Tower of Hanoi when moving from 32k to 64k.
+
+The striking difference is the **compositional depth at collapse**: River Crossing fails with no thinking after only 0–5 valid moves, while Tower of Hanoi sustains 127 correct moves before failing. As the original paper notes, this is likely because River Crossing instances above N=2 are scarce in training data, while Tower of Hanoi solutions are well-represented.
+
+---
+
 ## Open Questions
 
 - Would N=9 solve with thinking at 128k tokens, as N=8 did at 64k?
+- Would River Crossing with thinking at 64k push the collapse to N=5 or N=6, as the budget-exhaustion pattern suggests?
 - Were the collapses reported in the original paper for other models (DeepSeek-R1, o3-mini) also budget-limited?
 - Is 64k tokens a sufficient budget to test *reasoning* collapse, or does it just test *generation capacity*?
-- Does Opus 4.6 push the no-thinking collapse threshold beyond N=8, or is the failure at move #127 model-agnostic?
+- Does Opus 4.6 push the no-thinking collapse threshold beyond N=8 on Hanoi, or beyond N=3 on River Crossing?
 
 ---
 
@@ -152,12 +193,20 @@ $env:ANTHROPIC_API_KEY="sk-ant-..."   # PowerShell
 export ANTHROPIC_API_KEY="sk-ant-..."  # bash/zsh
 ```
 
+**Tower of Hanoi:**
 ```bash
 python hanoi_benchmark.py                                           # no thinking, 8k
 python hanoi_benchmark.py --max-tokens 64000                        # no thinking, 64k
 python hanoi_benchmark.py --thinking --max-tokens 64000             # thinking, 64k
 python hanoi_benchmark.py --compare --max-tokens 64000 --samples 5  # full comparison
-python hanoi_benchmark.py --model opus --thinking --max-tokens 64000
+```
+
+**River Crossing:**
+```bash
+python river_benchmark.py                                           # no thinking, 8k
+python river_benchmark.py --thinking --max-tokens 32000             # thinking, 32k
+python river_benchmark.py --compare --max-tokens 32000              # full comparison
+python river_benchmark.py --n-max 8 --thinking --max-tokens 64000   # push limits
 ```
 
 ---

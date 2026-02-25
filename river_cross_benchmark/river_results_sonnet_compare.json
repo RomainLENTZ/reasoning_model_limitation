@@ -1,0 +1,242 @@
+[
+  {
+    "n": 2,
+    "success": false,
+    "valid_moves": 1,
+    "total_moves": 5,
+    "tokens": 1160,
+    "error": "Move 1: unsafe on left bank after move \u2014 a_2 is with {'A_1'} but A_2 is absent"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 5,
+    "total_moves": 5,
+    "tokens": 1288,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 5,
+    "total_moves": 5,
+    "tokens": 1515,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": false,
+    "valid_moves": 5,
+    "total_moves": 9,
+    "tokens": 1737,
+    "error": "Move 5: unsafe on left bank after move \u2014 a_2 is with {'A_1'} but A_2 is absent"
+  },
+  {
+    "n": 3,
+    "success": false,
+    "valid_moves": 2,
+    "total_moves": 11,
+    "tokens": 1640,
+    "error": "Move 2: unsafe on right bank after move \u2014 a_1 is with {'A_2'} but A_1 is absent"
+  },
+  {
+    "n": 3,
+    "success": false,
+    "valid_moves": 2,
+    "total_moves": 6,
+    "tokens": 1632,
+    "error": "Move 2: unsafe on right bank after move \u2014 a_1 is with {'A_2'} but A_1 is absent"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 9,
+    "tokens": 1664,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_3 is with {'A_4'} but A_3 is absent"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 19,
+    "tokens": 17038,
+    "error": "Move 0: unsafe on boat \u2014 a_2 is with {'A_1'} but A_2 is absent"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 2,
+    "total_moves": 21,
+    "tokens": 1779,
+    "error": "Move 2: unsafe on boat \u2014 a_1 is with {'A_4'} but A_1 is absent"
+  },
+  {
+    "n": 5,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 13,
+    "tokens": 3774,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4'} but A_1 is absent"
+  },
+  {
+    "n": 5,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 13,
+    "tokens": 1835,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4'} but A_1 is absent"
+  },
+  {
+    "n": 5,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 19,
+    "tokens": 1700,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4'} but A_1 is absent"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 15,
+    "tokens": 1605,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4', 'A_6'} but A_1 is absent"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 15,
+    "tokens": 1581,
+    "error": "Move 0: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4', 'A_6'} but A_1 is absent"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 6,
+    "total_moves": 24,
+    "tokens": 32412,
+    "error": "Move 6: unsafe on left bank after move \u2014 a_1 is with {'A_5', 'A_4', 'A_6'} but A_1 is absent"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 5,
+    "total_moves": 5,
+    "tokens": 2552,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 5,
+    "total_moves": 5,
+    "tokens": 5322,
+    "error": "solved"
+  },
+  {
+    "n": 2,
+    "success": true,
+    "valid_moves": 5,
+    "total_moves": 5,
+    "tokens": 2332,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 11,
+    "total_moves": 11,
+    "tokens": 13705,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 11,
+    "total_moves": 11,
+    "tokens": 13996,
+    "error": "solved"
+  },
+  {
+    "n": 3,
+    "success": true,
+    "valid_moves": 11,
+    "total_moves": 11,
+    "tokens": 31803,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32413,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 4,
+    "success": true,
+    "valid_moves": 9,
+    "total_moves": 9,
+    "tokens": 13504,
+    "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32413,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 5,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32421,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 5,
+    "success": true,
+    "valid_moves": 11,
+    "total_moves": 11,
+    "tokens": 18871,
+    "error": "solved"
+  },
+  {
+    "n": 5,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32421,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32429,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32429,
+    "error": "No moves extracted"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 0,
+    "error": "list index out of range"
+  }
+]
