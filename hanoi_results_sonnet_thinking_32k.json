@@ -4,7 +4,7 @@
     "success": true,
     "valid_moves": 1,
     "total_moves": 1,
-    "tokens": 516,
+    "tokens": 533,
     "error": "solved"
   },
   {
@@ -12,7 +12,7 @@
     "success": true,
     "valid_moves": 1,
     "total_moves": 1,
-    "tokens": 516,
+    "tokens": 533,
     "error": "solved"
   },
   {
@@ -20,7 +20,7 @@
     "success": true,
     "valid_moves": 1,
     "total_moves": 1,
-    "tokens": 516,
+    "tokens": 533,
     "error": "solved"
   },
   {
@@ -28,7 +28,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 740,
+    "tokens": 817,
     "error": "solved"
   },
   {
@@ -36,7 +36,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 754,
+    "tokens": 875,
     "error": "solved"
   },
   {
@@ -44,7 +44,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 748,
+    "tokens": 836,
     "error": "solved"
   },
   {
@@ -52,7 +52,7 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1019,
+    "tokens": 1141,
     "error": "solved"
   },
   {
@@ -60,7 +60,7 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1019,
+    "tokens": 1133,
     "error": "solved"
   },
   {
@@ -68,7 +68,7 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1008,
+    "tokens": 1118,
     "error": "solved"
   },
   {
@@ -76,7 +76,7 @@
     "success": true,
     "valid_moves": 15,
     "total_moves": 15,
-    "tokens": 1205,
+    "tokens": 2259,
     "error": "solved"
   },
   {
@@ -84,7 +84,7 @@
     "success": true,
     "valid_moves": 15,
     "total_moves": 15,
-    "tokens": 1246,
+    "tokens": 3147,
     "error": "solved"
   },
   {
@@ -92,7 +92,7 @@
     "success": true,
     "valid_moves": 15,
     "total_moves": 15,
-    "tokens": 1246,
+    "tokens": 3004,
     "error": "solved"
   },
   {
@@ -100,7 +100,7 @@
     "success": true,
     "valid_moves": 31,
     "total_moves": 31,
-    "tokens": 1625,
+    "tokens": 4917,
     "error": "solved"
   },
   {
@@ -108,7 +108,7 @@
     "success": true,
     "valid_moves": 31,
     "total_moves": 31,
-    "tokens": 1328,
+    "tokens": 3350,
     "error": "solved"
   },
   {
@@ -116,39 +116,31 @@
     "success": true,
     "valid_moves": 31,
     "total_moves": 31,
-    "tokens": 1798,
+    "tokens": 8603,
     "error": "solved"
-  },
-  {
-    "n": 6,
-    "success": false,
-    "valid_moves": 63,
-    "total_moves": 127,
-    "tokens": 1919,
-    "error": "Invalid move #63: Disk 6 is not on top of peg 1 (top=1)"
   },
   {
     "n": 6,
     "success": true,
     "valid_moves": 63,
     "total_moves": 63,
-    "tokens": 2197,
+    "tokens": 4757,
     "error": "solved"
   },
   {
     "n": 6,
-    "success": false,
-    "valid_moves": 23,
+    "success": true,
+    "valid_moves": 63,
     "total_moves": 63,
-    "tokens": 2089,
-    "error": "Invalid move #23: Disk 4 is not on top of peg 2 (top=5)"
+    "tokens": 4594,
+    "error": "solved"
   },
   {
-    "n": 7,
+    "n": 6,
     "success": true,
-    "valid_moves": 127,
-    "total_moves": 127,
-    "tokens": 1871,
+    "valid_moves": 63,
+    "total_moves": 63,
+    "tokens": 9146,
     "error": "solved"
   },
   {
@@ -156,7 +148,7 @@
     "success": true,
     "valid_moves": 127,
     "total_moves": 127,
-    "tokens": 1874,
+    "tokens": 14946,
     "error": "solved"
   },
   {
@@ -164,79 +156,87 @@
     "success": true,
     "valid_moves": 127,
     "total_moves": 127,
-    "tokens": 1923,
+    "tokens": 26427,
+    "error": "solved"
+  },
+  {
+    "n": 7,
+    "success": true,
+    "valid_moves": 127,
+    "total_moves": 127,
+    "tokens": 22932,
     "error": "solved"
   },
   {
     "n": 8,
     "success": false,
-    "valid_moves": 127,
-    "total_moves": 255,
-    "tokens": 2268,
-    "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
   },
   {
     "n": 8,
     "success": false,
-    "valid_moves": 127,
-    "total_moves": 255,
-    "tokens": 2768,
-    "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
   },
   {
     "n": 8,
     "success": false,
-    "valid_moves": 127,
-    "total_moves": 255,
-    "tokens": 18343,
-    "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32561,
+    "error": "No moves extracted"
   },
   {
     "n": 9,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 511,
-    "tokens": 5282,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32567,
+    "error": "No moves extracted"
   },
   {
     "n": 9,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 511,
-    "tokens": 9904,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 0,
+    "error": "peer closed connection without sending complete message body (incomplete chunked read)"
   },
   {
     "n": 9,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 447,
-    "tokens": 4699,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 2 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32567,
+    "error": "No moves extracted"
   },
   {
     "n": 10,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 1023,
-    "tokens": 10889,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
   },
   {
     "n": 10,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 1023,
-    "tokens": 9948,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
   },
   {
     "n": 10,
     "success": false,
-    "valid_moves": 191,
-    "total_moves": 1023,
-    "tokens": 9870,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+    "valid_moves": 0,
+    "total_moves": 0,
+    "tokens": 32573,
+    "error": "No moves extracted"
   }
 ]

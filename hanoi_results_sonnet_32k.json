@@ -28,7 +28,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 740,
+    "tokens": 675,
     "error": "solved"
   },
   {
@@ -36,7 +36,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 754,
+    "tokens": 745,
     "error": "solved"
   },
   {
@@ -44,7 +44,7 @@
     "success": true,
     "valid_moves": 3,
     "total_moves": 3,
-    "tokens": 748,
+    "tokens": 756,
     "error": "solved"
   },
   {
@@ -52,7 +52,7 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1019,
+    "tokens": 1021,
     "error": "solved"
   },
   {
@@ -60,7 +60,7 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1019,
+    "tokens": 1022,
     "error": "solved"
   },
   {
@@ -68,31 +68,39 @@
     "success": true,
     "valid_moves": 7,
     "total_moves": 7,
-    "tokens": 1008,
+    "tokens": 1022,
     "error": "solved"
+  },
+  {
+    "n": 4,
+    "success": false,
+    "valid_moves": 15,
+    "total_moves": 23,
+    "tokens": 1913,
+    "error": "Invalid move #15: Disk 4 is not on top of peg 1 (top=1)"
   },
   {
     "n": 4,
     "success": true,
     "valid_moves": 15,
     "total_moves": 15,
-    "tokens": 1205,
+    "tokens": 1239,
     "error": "solved"
   },
   {
     "n": 4,
-    "success": true,
-    "valid_moves": 15,
+    "success": false,
+    "valid_moves": 13,
     "total_moves": 15,
-    "tokens": 1246,
-    "error": "solved"
+    "tokens": 1568,
+    "error": "Invalid move #13: Disk 2 is not on top of peg 0 (top=3)"
   },
   {
-    "n": 4,
+    "n": 5,
     "success": true,
-    "valid_moves": 15,
-    "total_moves": 15,
-    "tokens": 1246,
+    "valid_moves": 31,
+    "total_moves": 31,
+    "tokens": 1642,
     "error": "solved"
   },
   {
@@ -100,7 +108,7 @@
     "success": true,
     "valid_moves": 31,
     "total_moves": 31,
-    "tokens": 1625,
+    "tokens": 1553,
     "error": "solved"
   },
   {
@@ -108,47 +116,39 @@
     "success": true,
     "valid_moves": 31,
     "total_moves": 31,
-    "tokens": 1328,
-    "error": "solved"
-  },
-  {
-    "n": 5,
-    "success": true,
-    "valid_moves": 31,
-    "total_moves": 31,
-    "tokens": 1798,
+    "tokens": 1046,
     "error": "solved"
   },
   {
     "n": 6,
     "success": false,
-    "valid_moves": 63,
-    "total_moves": 127,
-    "tokens": 1919,
-    "error": "Invalid move #63: Disk 6 is not on top of peg 1 (top=1)"
-  },
-  {
-    "n": 6,
-    "success": true,
-    "valid_moves": 63,
+    "valid_moves": 31,
     "total_moves": 63,
-    "tokens": 2197,
-    "error": "solved"
+    "tokens": 1353,
+    "error": "Invalid move #31: Cannot place disk 6 on top of disk 1"
   },
   {
     "n": 6,
     "success": false,
-    "valid_moves": 23,
+    "valid_moves": 63,
     "total_moves": 63,
-    "tokens": 2089,
-    "error": "Invalid move #23: Disk 4 is not on top of peg 2 (top=5)"
+    "tokens": 1304,
+    "error": "incorrect final state"
+  },
+  {
+    "n": 6,
+    "success": false,
+    "valid_moves": 47,
+    "total_moves": 63,
+    "tokens": 1959,
+    "error": "Invalid move #47: Cannot place disk 5 on top of disk 1"
   },
   {
     "n": 7,
     "success": true,
     "valid_moves": 127,
     "total_moves": 127,
-    "tokens": 1871,
+    "tokens": 1889,
     "error": "solved"
   },
   {
@@ -156,7 +156,7 @@
     "success": true,
     "valid_moves": 127,
     "total_moves": 127,
-    "tokens": 1874,
+    "tokens": 1851,
     "error": "solved"
   },
   {
@@ -164,7 +164,7 @@
     "success": true,
     "valid_moves": 127,
     "total_moves": 127,
-    "tokens": 1923,
+    "tokens": 1951,
     "error": "solved"
   },
   {
@@ -172,7 +172,7 @@
     "success": false,
     "valid_moves": 127,
     "total_moves": 255,
-    "tokens": 2268,
+    "tokens": 3034,
     "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
   },
   {
@@ -180,7 +180,7 @@
     "success": false,
     "valid_moves": 127,
     "total_moves": 255,
-    "tokens": 2768,
+    "tokens": 2626,
     "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
   },
   {
@@ -188,7 +188,7 @@
     "success": false,
     "valid_moves": 127,
     "total_moves": 255,
-    "tokens": 18343,
+    "tokens": 3033,
     "error": "Invalid move #127: Cannot place disk 8 on top of disk 1"
   },
   {
@@ -196,7 +196,7 @@
     "success": false,
     "valid_moves": 191,
     "total_moves": 511,
-    "tokens": 5282,
+    "tokens": 9909,
     "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
   },
   {
@@ -204,39 +204,39 @@
     "success": false,
     "valid_moves": 191,
     "total_moves": 511,
+    "tokens": 3966,
+    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+  },
+  {
+    "n": 9,
+    "success": false,
+    "valid_moves": 191,
+    "total_moves": 511,
+    "tokens": 6874,
+    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
+  },
+  {
+    "n": 10,
+    "success": false,
+    "valid_moves": 191,
+    "total_moves": 1023,
     "tokens": 9904,
     "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
   },
   {
-    "n": 9,
-    "success": false,
-    "valid_moves": 191,
-    "total_moves": 447,
-    "tokens": 4699,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 2 (top=8)"
-  },
-  {
     "n": 10,
     "success": false,
     "valid_moves": 191,
     "total_moves": 1023,
-    "tokens": 10889,
+    "tokens": 9904,
     "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
   },
   {
     "n": 10,
     "success": false,
     "valid_moves": 191,
-    "total_moves": 1023,
-    "tokens": 9948,
-    "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
-  },
-  {
-    "n": 10,
-    "success": false,
-    "valid_moves": 191,
-    "total_moves": 1023,
-    "tokens": 9870,
+    "total_moves": 895,
+    "tokens": 8752,
     "error": "Invalid move #191: Disk 7 is not on top of peg 1 (top=8)"
   }
 ]

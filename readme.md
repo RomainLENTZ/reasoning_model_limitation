@@ -1,123 +1,143 @@
-# Tower of Hanoi Benchmark — Claude Sonnet 4.6: Thinking vs No Thinking
-### A partial reproduction of *"The Illusion of Thinking"* (Apple Research, 2025)
+# 🗼 Tower of Hanoi Benchmark — Claude Sonnet 4.6
 
----
-
-*Experiment run: February 2026*
-*No thinking: 3 samples per N, max_tokens=32,000, model: claude-sonnet-4-6*
-*With thinking: 3 samples per N, max_tokens=32,000, adaptive thinking, model: claude-sonnet-4-6*
-*Original paper: Shojaee et al., "The Illusion of Thinking", Apple Research, 2025*
+> Does Claude Sonnet 4.6 actually reason? A reproducible benchmark testing reasoning collapse on Tower of Hanoi puzzles, inspired by Apple Research's "Illusion of Thinking" (2025).
 
 ---
 
 ## Context
 
-This experiment reproduces part of the methodology from the paper **"The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"** published by Apple Research (Shojaee et al., 2025).
+This project reproduces part of the methodology from **"The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity"** (Shojaee et al., Apple Research, 2025).
 
-> Shojaee et al. (2025). *The Illusion of Thinking: Understanding the Strengths and Limitations of Reasoning Models via the Lens of Problem Complexity.* Apple Research. [arxiv.org/abs/2506.06941](https://arxiv.org/abs/2506.06941)
+> Shojaee et al. (2025). *The Illusion of Thinking.* Apple Research. [arxiv.org/abs/2506.06941](https://arxiv.org/abs/2506.06941)
 
-The original paper tested frontier Large Reasoning Models (LRMs) — including Claude 3.7 Sonnet, DeepSeek-R1, and o3-mini — on controllable puzzle environments to study how reasoning quality scales with problem complexity. Their central finding: all models exhibit a **complete accuracy collapse** beyond a model-specific complexity threshold, even with ample token budget.
+The paper tested frontier LRMs (Claude 3.7 Sonnet, DeepSeek-R1, o3-mini) on controllable puzzle environments and concluded that all models exhibit a **complete accuracy collapse** beyond a model-specific complexity threshold — even with ample token budget. Their experiments used a 64k token budget.
 
-This reproduction runs the Tower of Hanoi puzzle on **Claude Sonnet 4.6** in two configurations: without thinking (32k token budget) and with adaptive thinking (32k token budget). 3 samples per complexity level, N=1 to N=10.
+This reproduction runs the same Tower of Hanoi environment on **Claude Sonnet 4.6**, progressively increasing the token budget from 8k to 64k. What started as a straightforward confirmation of the paper's findings turned into something more interesting: **the collapse disappears for thinking models when the token budget is sufficient.**
 
-> **Differences from the original paper:** The original used 25 samples per N, up to N=20, with a 64k token budget. This is a lightweight reproduction designed to validate the core phenomenon at lower cost.
-
----
-
-## Results
-
-### Without thinking (max_tokens=8,000)
-![Sonnet 4.6 without thinking](hanoi_benchmark_sonnet.png)
-
-### With adaptive thinking (max_tokens=32,000)
-![Sonnet 4.6 with adaptive thinking](hanoi_benchmark_sonnet_thinking.png)
-
-
-## Results Summary
-
-| N | Min moves | No thinking (accuracy) | No thinking tokens avg | With thinking (accuracy) | Thinking tokens avg |
-|---|-----------|------------------------|------------------------|-------------------------|---------------------|
-| 1 | 1 | **100%** | 516 | **100%** | 533 |
-| 2 | 3 | **100%** | 725 | **100%** | 843 |
-| 3 | 7 | **100%** | 1,022 | **100%** | 1,131 |
-| 4 | 15 | **33%** | 1,573 | **100%** | 2,803 |
-| 5 | 31 | **100%** | 1,414 | **100%** | 5,623 |
-| 6 | 63 | **0%** | 1,539 | **100%** | 6,166 |
-| 7 | 127 | **100%** | 1,897 | **100%** | 21,435 |
-| 8 | 255 | **0%** | 2,898 | **0%** ← COLLAPSE | 32,561 |
-| 9 | 511 | **0%** | 6,916 | **0%** ← COLLAPSE | ~32,567 |
-| 10 | 1023 | **0%** | 9,520 | **0%** ← COLLAPSE | 32,573 |
+> **Scope:** 3 samples per N, N=1 to N=10, across 5 configurations. The original paper used 25 samples and N up to 20.
 
 ---
 
-## Key Observations
+## Results at a Glance
 
-### 1. Thinking dramatically extends the solving range
+### Without thinking — 64k tokens (final run)
+![Sonnet 4.6 without thinking](assets/hanoi_benchmark_sonnet.png)
 
-The most striking result: with adaptive thinking, Sonnet 4.6 solves **N=6 perfectly** (100%) — a level where the no-thinking version collapses to 0% on all 3 samples with the same systematic error. This is a direct validation of the paper's claim that thinking modes delay the collapse threshold.
+### With adaptive thinking — 64k tokens (final run)
+![Sonnet 4.6 with thinking](assets/hanoi_benchmark_sonnet_thinking.png)
 
-Collapse point comparison:
-- **Without thinking**: collapses at N=6 (with anomalous recovery at N=7)
-- **With thinking**: collapses at N=8, solving cleanly up to N=7
+---
 
-That's a **+2 disk improvement** in the effective solving range, which corresponds to solving puzzles requiring up to 4× more moves (127 vs 31 minimum moves before collapse).
+## Full Data — All Runs
 
-### 2. The collapse at N=8 is hard and immediate
+Five runs were conducted, progressively increasing the token budget to understand whether observed collapses reflect reasoning limits or generation capacity limits.
 
-With thinking, the drop from N=7 (100%) to N=8 (0%) is a cliff — no partial failures, no recovery. All 3 samples at N=8 fail with the same error: "No moves extracted." The model burns through ~32k tokens but produces no valid move list, suggesting it ran out of token budget mid-generation rather than producing wrong moves.
+### No thinking
 
-The 32k no-thinking run reveals more varied failure modes at N=6: one sample fails at move #31 (same as Run 1), one fails at move #47, and one executes all 63 moves but reaches an incorrect final state — the model completes the full move count but solves a slightly different problem. This diversity of failures across runs suggests the model is near its boundary and explores multiple flawed strategies rather than one deterministic error.
+| N | Min moves | 8k tokens | 32k tokens | 64k tokens |
+|:-:|:---------:|:---------:|:----------:|:----------:|
+| | | acc / tokens | acc / tokens | acc / tokens |
+| 1 | 1 | 100% / 559 | 100% / 516 | 100% / 516 |
+| 2 | 3 | 100% / 789 | 100% / 725 | 100% / 747 |
+| 3 | 7 | 100% / 1,054 | 100% / 1,022 | 100% / 1,015 |
+| 4 | 15 | 67% / 1,473 | 33% / 1,573 | 100% / 1,232 |
+| 5 | 31 | 100% / 1,525 | 100% / 1,414 | 100% / 1,584 |
+| 6 | 63 | 0% / 2,338 | 0% / 1,539 | 33% / 2,068 |
+| 7 | 127 | 100% / 1,941 | 100% / 1,897 | 100% / 1,889 |
+| 8 | 255 | 0% / 3,106 | 0% / 2,898 | 0% / 7,793 |
+| 9 | 511 | 0% / 5,361 | 0% / 6,916 | 0% / 6,628 |
+| 10 | 1,023 | 0% / 8,599 | 0% / 9,520 | 0% / 10,236 |
 
+**Key observation:** Regardless of token budget (8k, 32k, or 64k), the no-thinking model fails at N=8+ every time — and never comes close to the token limit when doing so. At 64k, the N=8 failure uses only ~7,793 tokens out of 64,000 available. **This is a genuine reasoning failure, not a capacity limit.**
 
-### 3. The token behavior confirms the paper's central finding
+### With adaptive thinking
 
-The token usage curve for the thinking run is highly revealing:
+| N | Min moves | 32k tokens | 64k tokens |
+|:-:|:---------:|:----------:|:----------:|
+| | | acc / tokens | acc / tokens |
+| 1 | 1 | 100% / 533 | 100% / 533 |
+| 2 | 3 | 100% / 843 | 100% / 888 |
+| 3 | 7 | 100% / 1,131 | 100% / 1,131 |
+| 4 | 15 | 100% / 2,803 | 100% / 2,518 |
+| 5 | 31 | 100% / 5,623 | 67% / 3,383 |
+| 6 | 63 | 100% / 6,166 | 100% / 9,869 |
+| 7 | 127 | 100% / 21,435 | 100% / 20,689 |
+| 8 | 255 | **0%** / 32,561 ← budget hit | **100%** / 45,548 ← solved |
+| 9 | 511 | 0% / 21,711 | 0% / 64,567 ← budget hit |
+| 10 | 1,023 | 0% / 32,573 | 0% / 64,573 ← budget hit |
 
-- N=1 to N=6: tokens grow steadily with complexity (533 → 6,166)
-- N=7: massive jump to ~21,435 tokens — the model throws significant effort at this
-- N=8 to N=10: tokens plateau at ~32,561 — the hard limit
+**Key observation:** At 32k, thinking collapses at N=8 — tokens hit the ceiling at 32,561. At 64k, N=8 is **solved perfectly** (3/3, up to 61k tokens used). The collapse at N=9 is again budget-limited at 64,567 tokens. Each time the budget is increased, the collapse point shifts up by exactly one disk.
 
-This is the **"capitulation" pattern** described in the original paper: beyond a threshold, models don't gracefully reduce effort — they hit the wall. The slight token increase from N=8 to N=10 (32,561 → 32,573) suggests the model is consistently maxing out the budget without producing valid output.
+---
 
-### 4. The no-thinking odd/even anomaly disappears with thinking
+## The Central Finding: Token Budget vs. Reasoning Collapse
 
-Without thinking, there's a striking non-monotonic pattern — the model fails at N=6, then inexplicably succeeds at N=7 (100%, perfect 127-move solutions), then fails again at N=8. This suggests N=7 solutions are memorized rather than reasoned.
+### What we expected
 
-With thinking, the accuracy curve is perfectly monotonic: 100% from N=1 to N=7, then 0% from N=8 onward. This is the clean sigmoid collapse the paper predicted. The thinking mode appears to eliminate the memorization artifact and replace it with genuine (but still limited) reasoning.
+Going into this experiment, the goal was to confirm the paper's findings on a newer model. The early runs at 8k and 32k appeared to do exactly that — thinking mode collapsed at N=8, matching the paper's reported threshold for Claude 3.7 Sonnet. The 32k results looked like a clean replication.
 
-### 5. The specific failure mode shifts completely
+### What the 64k run revealed
 
-| N | No thinking failure | With thinking failure |
-|---|--------------------|-----------------------|
-| 6 | Move #31: illegal disk placement (100% of samples) | None — solved perfectly |
-| 8 | Move #127: illegal disk placement (100% of samples) | No moves extracted — token budget exhausted |
+Increasing the budget to 64k — the same budget used in the original paper — changed everything. With thinking, N=8 went from 0% to **100%**. The model didn't fail to reason: it had simply run out of space to write the answer.
 
-Without thinking, the model produces wrong moves at a precise position (the midpoint where the largest disk must be placed). With thinking, it never even produces moves for N=8+ — it runs out of space before outputting the solution. These are fundamentally different failure modes: one is a reasoning error, the other is a generation capacity limit.
+This raises a direct question for the original paper: if Claude 3.7 Sonnet's observed collapse at N=8 with a 64k budget was also caused by token exhaustion rather than a reasoning failure, the paper's central claim for thinking models would need to be revisited. Without access to the token consumption data from the original experiments, this cannot be confirmed — but the pattern is consistent enough to warrant the question.
+
+### Two fundamentally different types of failure
+
+The contrast between thinking and no-thinking runs is the most important result of this reproduction:
+
+| | No thinking at 64k (N=8) | With thinking at 32k (N=8) |
+|---|---|---|
+| Tokens used | ~7,793 out of 64,000 available | ~32,561 at the hard limit |
+| Moves produced | All 255 | None |
+| Failure cause | Illegal move at step #127 | Token budget exhausted |
+| Nature | **Genuine reasoning failure** | **Generation capacity limit** |
+
+Without thinking, the model has ample budget and still fails — it produces every move but makes an illegal placement at the exact midpoint of the puzzle. That is a true architectural limitation. With thinking at 32k, the model never even outputs the moves — it runs out of space. Increasing the budget to 64k resolves this entirely.
+
+---
+
+## Other Observations
+
+### The odd/even anomaly is real and reproducible
+
+Across all three no-thinking runs (8k, 32k, 64k), the same non-monotonic pattern holds: N=6 struggles or fails, N=7 recovers to 100% using only ~1,900 tokens, N=8 collapses to 0%. This is consistent across three independent runs with completely different token budgets, ruling out any budget-related explanation. The N=7 recovery at such low token count is almost certainly pattern memorization — the model has seen this specific 127-move sequence during training and retrieves it rather than computing it. The thinking runs do not show this artifact, further supporting the memorization hypothesis.
+
+### Thinking models need far more budget than expected
+
+Token consumption for thinking mode grows steeply with complexity:
+
+- N=6: ~9,869 tokens
+- N=7: ~20,689 tokens
+- N=8: ~45,548 tokens (when successful)
+- N=9: hits 64k ceiling without completing
+
+Solving N=9 with thinking would likely require 100k–150k tokens. Any benchmark testing thinking models with a fixed 64k budget is effectively testing generation capacity — not reasoning capability — beyond a certain complexity level.
+
+### The no-thinking failure mode is strikingly consistent
+
+At N=8, across all runs and all budgets, the no-thinking model fails at exactly move #127 with the same error: attempting to place the largest disk on a peg that is blocked. Move #127 is precisely the midpoint of the 255-move solution — the moment where the largest disk must be placed. The model solves the first recursive sub-problem perfectly, then loses track of the board state at the critical moment. This deterministic, budget-independent failure pattern is strong evidence of a structural reasoning limitation.
 
 ---
 
 ## Comparison with the Original Paper
 
-| Observation | Apple Paper (Claude 3.7 Thinking) | This run (Sonnet 4.6 + adaptive thinking) |
+| Observation | Apple Paper (Claude 3.7) | This reproduction (Sonnet 4.6) |
 |---|---|---|
-| Collapse threshold | ~N=8–10 | N=8 |
-| Accuracy below threshold | 100% | 100% (N=1–7) |
-| Accuracy above threshold | 0% | 0% (N=8–10) |
-| Token growth then plateau | Yes — decreases counterintuitively | Yes — hits hard limit |
-| Failure mode above threshold | Various | Token budget exhausted |
-| Non-monotonic accuracy | Observed | Not observed — clean collapse |
-
-The results are remarkably consistent with the paper's findings on Claude 3.7 Thinking, despite Sonnet 4.6 being a newer and more capable model. The collapse threshold is similar, and the fundamental limitation — inability to execute long sequential reasoning chains reliably — appears unchanged across model generations.
+| Collapse threshold, no thinking | ~N=6–8 | N=8, consistent across all budgets |
+| Collapse threshold, thinking at 64k | ~N=8–10 (collapse) | N=9 — N=8 **solved** at 64k |
+| Nature of collapse, no thinking | Reasoning failure | Confirmed: genuine reasoning failure |
+| Nature of collapse, thinking | Assumed reasoning failure | Likely budget exhaustion |
+| 64k budget sufficient? | Assumed yes | Questionable for thinking models |
 
 ---
 
-## What this suggests about thinking modes
+## Open Questions
 
-The comparison between the two runs reveals something important: **adaptive thinking doesn't fix the fundamental limitation, it shifts it.** The model gains 2 extra complexity levels, but the cliff is just as abrupt. More compute buys more capability up to a point, then collapses entirely.
-
-This supports the paper's architectural argument: the failure is not about reasoning quality per se, but about the **inability of autoregressive models to track and maintain state across hundreds of sequential, interdependent steps**. Extended thinking gives more scratch space, but doesn't change the underlying mechanism.
-
-The N=8 token exhaustion pattern also raises a methodological point: with a larger token budget (64k as in the original paper), the thinking model might produce wrong moves at N=8 rather than no moves at all — potentially revealing deeper failure modes. Increasing the budget further is a natural next step.
+- Would N=9 solve with thinking at 128k tokens, as N=8 did at 64k?
+- Were the collapses reported in the original paper for other models (DeepSeek-R1, o3-mini) also budget-limited?
+- Is 64k tokens a sufficient budget to test *reasoning* collapse, or does it just test *generation capacity*?
+- Does Opus 4.6 push the no-thinking collapse threshold beyond N=8, or is the failure at move #127 model-agnostic?
 
 ---
 
@@ -128,40 +148,29 @@ pip install anthropic matplotlib numpy
 ```
 
 ```bash
-# Set your API key
 $env:ANTHROPIC_API_KEY="sk-ant-..."   # PowerShell
 export ANTHROPIC_API_KEY="sk-ant-..."  # bash/zsh
 ```
 
 ```bash
-# Run without thinking (~$1-2)
-python hanoi_benchmark.py
-
-# Run with adaptive thinking (~$5-8)
-python hanoi_benchmark.py --thinking --max-tokens 32000
-
-# Compare both on same chart (~$8-12)
-python hanoi_benchmark.py --compare --max-tokens 32000
-
-# Full options
-python hanoi_benchmark.py --model [sonnet|opus] --thinking --n-max 12 --samples 5 --max-tokens 32000
+python hanoi_benchmark.py                                           # no thinking, 8k
+python hanoi_benchmark.py --max-tokens 64000                        # no thinking, 64k
+python hanoi_benchmark.py --thinking --max-tokens 64000             # thinking, 64k
+python hanoi_benchmark.py --compare --max-tokens 64000 --samples 5  # full comparison
+python hanoi_benchmark.py --model opus --thinking --max-tokens 64000
 ```
 
 ---
 
-## Pricing estimate
+## Cost Estimate
 
 | Run | Config | Estimated cost |
-|-----|--------|---------------|
-| No thinking | N=1–10, 3 samples, 32k tokens | ~$2-3 |
-| With thinking | N=1–10, 3 samples, 32k tokens | ~$5–8 |
-| Compare mode | Both runs combined | ~$8–12 |
+|-----|--------|----------------|
+| No thinking | N=1–10, 3 samples, 64k | ~$2–3 |
+| With thinking | N=1–10, 3 samples, 32k | ~$5–8 |
+| With thinking | N=1–10, 3 samples, 64k | ~$12–18 |
 
 ---
 
-## Next steps
-
-- **Increase token budget to 64k** for the thinking run to observe the actual reasoning failure at N=8 (vs. budget exhaustion)
-- **Run with `--compare` mode** to generate a side-by-side visualization of both curves on the same chart
-- **Increase samples to 5–10** for more statistical reliability, especially around the collapse boundary (N=6–8)
-- **Test Opus 4.6** to see if the larger model pushes the threshold to N=9 or N=10
+*Experiment run: February 2026 — model: claude-sonnet-4-6*
+*Original paper: Shojaee et al., "The Illusion of Thinking", Apple Research, 2025*
