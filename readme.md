@@ -1,4 +1,4 @@
-# 🗼 Tower of Hanoi Benchmark — Claude Sonnet 4.6
+# Tower of Hanoi Benchmark — Claude Sonnet 4.6
 
 > Does Claude Sonnet 4.6 actually reason? A reproducible benchmark testing reasoning collapse on Tower of Hanoi puzzles, inspired by Apple Research's "Illusion of Thinking" (2025).
 
@@ -21,10 +21,10 @@ This reproduction runs the same Tower of Hanoi environment on **Claude Sonnet 4.
 ## Results at a Glance
 
 ### Without thinking — 64k tokens (final run)
-![Sonnet 4.6 without thinking](assets/hanoi_benchmark_sonnet.png)
+![Sonnet 4.6 without thinking](hanoi_benchmark_sonnet.png)
 
 ### With adaptive thinking — 64k tokens (final run)
-![Sonnet 4.6 with thinking](assets/hanoi_benchmark_sonnet_thinking.png)
+![Sonnet 4.6 with thinking](hanoi_benchmark_sonnet_thinking.png)
 
 ---
 
