@@ -136,7 +136,7 @@ At N=8, across all runs and all budgets, the no-thinking model fails at exactly 
 
 To complement the Tower of Hanoi results, the same benchmark was run on the **River Crossing** puzzle (N=2 to N=6, 3 samples per N, 32k token budget), using the methodology from the original paper.
 
-![River Crossing results](river_benchmark_sonnet_compare.png)
+![River Crossing results](river_cross_benchmark/river_benchmark_sonnet_compare.png)
 
 ### Data
 
